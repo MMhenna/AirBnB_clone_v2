@@ -3,12 +3,12 @@
     Implementation of the State class
 '''
 
-from models.base_model import BaseModel, Base
+from .base_model import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 import os
-import models
-from models.city import City
+from .. import models
+from .city import City
 
 
 class State(BaseModel, Base):
