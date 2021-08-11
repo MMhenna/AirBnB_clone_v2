@@ -3,9 +3,8 @@
     Define the class Place.
 '''
 import os
-from .. import models
-from .base_model import BaseModel, Base
-from .amenity import Amenity
+import models
+from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, ForeignKey, String, Integer, Float, Table
 
@@ -36,7 +35,9 @@ class Place(BaseModel, Base):
         longitude = Column(Float)
         amenity_ids = []
         reviews = relationship("Review", cascade="delete", backref="place")
-        amenities = relationship("Amenity", secondary=association_table, viewonly=False)
+        amenities = relationship("Amenity",
+                                    secondary=association_table,
+                                    viewonly=False)
     else:
         city_id = ""
         user_id = ""

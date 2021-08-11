@@ -4,7 +4,7 @@
 '''
 import os
 import uuid
-from .. import models
+import models
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, DateTime
@@ -23,7 +23,7 @@ class BaseModel:
     '''
 
     if os.getenv('HBNB_TYPE_STORAGE') == 'db':
-        id = Column(String(60), nullable=False, primary_key=True)
+        id = Column(String(60), nullable=False, primary_key=True, unique=True)
         created_at = Column(DateTime, default=datetime.utcnow(),
                             nullable=False)
         updated_at = Column(DateTime, default=datetime.utcnow(),
