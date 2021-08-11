@@ -2,17 +2,10 @@
 '''
     Declaration for database storage
 '''
-import models
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, String, create_engine
-from ..base_model import Base
-from ..user import User
-from ..place import Place
-from ..state import State
-from ..city import City
-from ..amenity import Amenity
-from ..review import Review
-from sqlalchemy.orm import sessionmaker, scoped_session, exc
+from sqlalchemy import create_engine
+from models import BaseModel, User, Place, State, City
+from models.base_model import Base
+from sqlalchemy.orm import sessionmaker, scoped_session
 import os
 
 
