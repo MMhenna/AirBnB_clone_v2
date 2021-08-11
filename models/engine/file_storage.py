@@ -2,7 +2,7 @@
 '''
     Define class FileStorage
 '''
-from .. import models
+import models
 import json
 
 

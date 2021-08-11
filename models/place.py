@@ -3,9 +3,8 @@
     Define the class Place.
 '''
 import os
-from .. import models
-from .base_model import BaseModel, Base
-from .amenity import Amenity
+import models
+from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, ForeignKey, String, Integer, Float, Table
 
