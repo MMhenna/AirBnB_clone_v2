@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-'''Define the class Place.
+'''
+    Define the class Place.
 '''
 import os
 import models
@@ -35,9 +36,7 @@ class Place(BaseModel, Base):
         longitude = Column(Float)
         amenity_ids = []
         reviews = relationship("Review", cascade="delete", backref="place")
-        amenities = relationship("Amenity",
-                                 secondary=association_table,
-                                 viewonly=False)
+        amenities = relationship("Amenity", secondary=association_table, viewonly=False)
     else:
         city_id = ""
         user_id = ""
