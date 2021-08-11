@@ -2,7 +2,7 @@
 '''
     Declaration for database storage
 '''
-from .. import models
+import models
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, create_engine
 from ..base_model import Base
