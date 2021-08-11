@@ -10,8 +10,7 @@ class FileStorage:
     __objects = {}
 
     def all(self):
-       '''
-            Return the dictionary
+        ''' Return the dictionary
         '''
         if cls is None:
             return self.__objects
