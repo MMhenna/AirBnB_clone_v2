@@ -33,7 +33,7 @@ def python_is_cool(text="is cool"):
 
 @app.route("/number/<int:n>", strict_slashes=False)
 def number(n):
-    """ function to return num in web page """
+    """ function display number """
     return "{} is a number".format(n)
 
 

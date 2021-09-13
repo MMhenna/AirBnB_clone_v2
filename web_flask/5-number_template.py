@@ -40,6 +40,7 @@ def number(n):
 
 @app.route("/number_template/<int:n>", strict_slashes=False)
 def number_template(n):
+    """ function display number in web page """
     return render_template("5-number.html", number=n)
 
 if __name__ == "__main__":
