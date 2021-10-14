@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
-# Creating server configuration
-sudo apt-get update
-sudo apt-get install nginx -y
-sudo mkdir -p /data/web_static/releases/test/
-sudo mkdir -p /data/web_static/shared/
-sudo touch /data/web_static/releases/test/index.html
-echo "Hello holberton" | sudo tee /data/web_static/releases/test/index.html
-sudo ln -sf /data/web_static/releases/test /data/web_static/current
-sudo chown -R ubuntu:ubuntu /data
-sudo sed -i "38i\ \tlocation \/hbnb_static {\\n\\t\\talias \/data\/web_static\/current\/;\\n}" /etc/nginx/sites-available/default
-sudo service nginx restart
+# Bash script that sets up your web servers for the deployment of web_static.
+apt-get update -y
+apt-get install -y nginx
+service nginx start
+mkdir -p /data/web_static/releases/test/
+mkdir -p /data/web_static/shared/ 
+echo "This is my sample content" > /data/web_static/releases/test/index.html
+ln -sf /data/web_static/releases/test /data/web_static/current 
+chown ubuntu:ubuntu -R /data/
+regex="^\tlocation+"
+location="\n\n\tlocation \/hbnb_static\/ \{\
+\n\t\talias \/data\/web_static\/current\/\;\
+\n\t\tautoindex off\;\
+\n\t\}"
+sed -i -r "s/$regex/$location\n\n\0/g" /etc/nginx/sites-enabled/default
+service nginx restart
