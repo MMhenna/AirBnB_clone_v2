@@ -13,11 +13,16 @@ class City(BaseModel, Base):
         Define the class City that inherits from BaseModel.
     '''
     if os.getenv('HBNB_TYPE_STORAGE') == 'db':
-        __tablename__ = "cities"
-        name = Column(String(128), nullable=False)
+        __tablename__ = 'cities'
         state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
-        # places = relationship("Place", backref="cities",
-        #                      cascade="delete")
+        name = Column(String(128), nullable=False)
+        places = relationship("Place",
+                              backref="cities",
+                              cascade="all, delete, delete-orphan")
     else:
-        name = ""
         state_id = ""
+        name = ""
+
+    def __init__(self, *args, **kwargs):
+        """initializes city"""
+        super().__init__(*args, **kwargs)

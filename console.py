@@ -40,11 +40,13 @@ class HBNBCommand(cmd.Cmd):
             Create a new instance of class BaseModel and saves it
             to the JSON file.
         '''
-        if len(args) == 0:
+        if len(args) < 1:
             print("** class name missing **")
             return
         try:
             args = re.split("\s|=", args)
+
+            print(args[0])
             new_instance = eval(args[0])()
 
             for idx in range(1, len(args), 2):
@@ -52,6 +54,7 @@ class HBNBCommand(cmd.Cmd):
                 value = args[idx + 1]
                 try:
                     setattr(new_instance, key, value)
+                    print(key,value)
                 except AttributeError:
                     continue
                 if re.search("^\".*\"$", value) is not None:
@@ -138,10 +141,12 @@ class HBNBCommand(cmd.Cmd):
         try:
             if len(args) != 0:
                 eval(args)
+
             if len(args) == 0:
                 objects = storage.all()
             else:
                 objects = storage.all(args)
+                print("azeaze")
         except NameError:
             print("** class doesn't exist **")
             return

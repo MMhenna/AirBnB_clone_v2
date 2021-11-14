@@ -3,7 +3,7 @@
     Declaration for database storage
 '''
 from sqlalchemy import create_engine
-from models import BaseModel, User, Place, State, City
+from models import BaseModel, User, Place, State, City,Review
 from models.base_model import Base
 from sqlalchemy.orm import sessionmaker, scoped_session
 import os
@@ -39,6 +39,7 @@ class DBStorage():
         new_dict = {}
         if cls is not None:
             result = self.__session.query(eval(cls)).all()
+            print('eazeaz')
             for item in result:
                 key = item.__class__.__name__ + '.' + item.id
                 new_dict[key] = item
