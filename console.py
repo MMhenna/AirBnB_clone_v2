@@ -7,13 +7,13 @@ import cmd
 import shlex
 import models.engine
 
-from .models.amenity import Amenity
-from .models.base_model import BaseModel
-from .models.city import City
-from .models.place import Place
-from .models.review import Review
-from .models.state import State
-from .models.user import User
+from models import Amenity
+from models import BaseModel
+from models import City
+from models import Place
+from models import Review
+from models import State
+from models import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -51,7 +51,7 @@ class HBNBCommand(cmd.Cmd):
                 key = args[idx]
                 value = args[idx + 1]
                 try:
-                    new_instance.__getattribute__(key)
+                    setattr(new_instance, key, value)
                 except AttributeError:
                     continue
                 if re.search("^\".*\"$", value) is not None:
